@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo Orologi</title>
 
+
     <!-- CSS manuale: puoi spostarlo in /css/style.css quando vuoi -->
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
@@ -27,6 +28,10 @@
 <body>
 <header>
     <h1>Catalogo</h1>
+    <a href="${pageContext.request.contextPath}/CarrelloViewServlet"
+       style="display:inline-block;padding:8px 12px;background:#111;color:#fff;text-decoration:none;border-radius:8px;">
+        Visualizza carrello
+    </a>
 </header>
 
 <main>
@@ -56,6 +61,9 @@
                         <p class="brand">${o.marca}</p>
                         <p class="price">€ ${o.prezzoAttuale}</p>
                         <p class="meta">Disponibili: ${o.stock}</p>
+                        <a href="${pageContext.request.contextPath}/ProdottoServlet?id=${o.id}">
+                            Vedi dettagli
+                        </a>
                     </div>
                 </c:forEach>
             </div>

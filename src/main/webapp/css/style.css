@@ -283,3 +283,170 @@ th.editCol, td.edit{
 .authHeader{
     margin-bottom: 18px; /* più spazio sotto l’header [web:634] */
 }
+
+/* =========================
+   PAGINA PRODOTTO (prodotto.jsp)
+   ========================= */
+
+/* card contenitore */
+.productCard{
+    background:#fff;
+    border: 1px solid #e6e8ef;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    padding: 18px;
+}
+
+/* layout 2 colonne: immagine grande a sinistra */
+.productGrid{
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    gap: 22px;
+    align-items: start;
+}
+
+/* box immagine */
+.productMedia{
+    background:#fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e6e8ef;
+}
+
+/* immagine “e-commerce”: grande, non tagliata */
+.productImg{
+    width: 100%;
+    height: 520px;
+    object-fit: contain;           /* non taglia, mantiene proporzioni [web:722] */
+    background: #f6f7fb;           /* sfondo visibile se “contain” lascia spazio */
+    display: block;
+}
+
+/* colonna info */
+.productInfo{
+    padding: 6px 2px;
+    color:#222;
+}
+
+.productTop{
+    margin-bottom: 10px;
+}
+
+.brandBig{
+    color:#555;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.priceBig{
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.stockLine{
+    color:#333;
+    margin-bottom: 10px;
+}
+
+/* specifiche stile tabella “soft” */
+.specs{
+    border: 1px solid #eef0f6;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fbfcff;
+    margin: 10px 0 14px;
+}
+
+.specRow{
+    display:flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eef0f6;
+}
+.specRow:last-child{ border-bottom: 0; }
+.specRow span:first-child{ color:#666; }
+
+/* descrizione più leggibile */
+.desc{
+    color:#333;
+    line-height: 1.55;
+    margin: 12px 0 16px;
+}
+
+/* form aggiunta al carrello */
+.addForm label{
+    display:block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.qtyRow{
+    display:flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.qtyInput{
+    width: 70px;
+    padding: 8px 10px;
+    border: 1px solid #d5d9e6;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* messaggi */
+.outOfStock{
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #fff5f6;
+    border: 1px solid #ffced2;
+    color: #8a1f2b;
+    font-weight: 700;
+    margin: 10px 0 12px;
+}
+
+/* disabilitati */
+button:disabled, input:disabled{
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+/* responsive: sotto 950px impilo */
+@media (max-width: 950px){
+    .productGrid{ grid-template-columns: 1fr; }
+    .productImg{ height: 360px; }
+    .qtyRow{ flex-wrap: wrap; }
+    .qtyInput{ width: 90px; }
+}
+
+/* CHECKOUT */
+
+.addrGrid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+    margin: 8px 0 6px;
+}
+.addrGrid input{ width:100%; }
+@media (max-width: 700px){
+    .addrGrid{ grid-template-columns: 1fr; }
+}
+
+.addrDetails{
+    margin-top: 10px;
+    border: 1px solid #e6e8ef;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fbfcff;
+}
+
+.addrDetails summary{
+    cursor: pointer;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 8px;
+}
+

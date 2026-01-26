@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -18,20 +20,25 @@
             <h1>Catalogo</h1>
 
             <div class="topActions">
-                <a class="btnGhost" href="${pageContext.request.contextPath}/CarrelloViewServlet">
-                    Visualizza carrello
-                </a>
+                <c:if test="${not empty sessionScope.utente and fn:toLowerCase(sessionScope.utente.tipo) == 'admin'}">
+                    <a class="btnGhost" href="${pageContext.request.contextPath}/admin">Pannello admin</a>
+                </c:if>
 
                 <c:choose>
                     <c:when test="${empty sessionScope.utente}">
                         <a class="btnGhost" href="${pageContext.request.contextPath}/view/login.jsp">Login</a>
-                        <a class="btnPrimary" href="${pageContext.request.contextPath}/view/register.jsp">Registrati</a>
+                        <a class="btnGhost" href="${pageContext.request.contextPath}/view/register.jsp">Registrati</a>
+
                     </c:when>
 
                     <c:otherwise>
                         <span class="helloUser">Ciao, ${sessionScope.utente.nome}</span>
+                        <a class="btnGhost" href="${pageContext.request.contextPath}/CarrelloViewServlet">Visualizza carrello</a>
+                        <a class="btnGhost" href="${pageContext.request.contextPath}/MyOrdersServlet">I miei ordini</a>
                         <a class="btnGhost" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
+
                     </c:otherwise>
+
                 </c:choose>
             </div>
         </header>
@@ -53,7 +60,7 @@
                                 <a class="cardMedia" href="${pageContext.request.contextPath}/ProdottoServlet?id=${o.id}">
                                     <c:choose>
                                         <c:when test="${not empty o.immagine}">
-                                            <img src="${pageContext.request.contextPath}${o.immagine}"
+                                            <img src="${pageContext.request.contextPath}/${o.immagine}"
                                                  alt="Immagine ${o.nomeModello}">
                                         </c:when>
                                         <c:otherwise>

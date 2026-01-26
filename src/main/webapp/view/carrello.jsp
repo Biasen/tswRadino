@@ -7,8 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrello</title>
-
-    <!-- CSS esterno -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 
@@ -17,7 +15,7 @@
     <div class="cartCard">
 
         <header class="catalogHeader">
-            <h1>Catalogo</h1>
+            <h1>Carrello</h1>
 
             <div class="topActions">
                 <a class="btnGhost" href="${pageContext.request.contextPath}/CatalogoServlet">
@@ -27,12 +25,13 @@
                 <c:choose>
                     <c:when test="${empty sessionScope.utente}">
                         <a class="btnGhost" href="${pageContext.request.contextPath}/view/login.jsp">Login</a>
-                        <a class="btnPrimary" href="${pageContext.request.contextPath}/view/register.jsp">Registrati</a>
+                        <a class="btnGhost" href="${pageContext.request.contextPath}/view/register.jsp">Registrati</a>
                     </c:when>
 
                     <c:otherwise>
                         <span class="helloUser">Ciao, ${sessionScope.utente.nome}</span>
                         <a class="btnGhost" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
+                        <a class="btnGhost" href="${pageContext.request.contextPath}/MyOrdersServlet">I miei ordini</a>
                     </c:otherwise>
                 </c:choose>
             </div>
